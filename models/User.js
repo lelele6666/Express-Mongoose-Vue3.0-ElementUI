@@ -20,11 +20,11 @@ const UserSchema = new Schema({
     avatar:{
         type:String,
     },
-    // 创建日期
-    date:{
-        type:Date,
-        required:true
-    }
+    // // 创建日期
+    // date:{
+    //     type:Date,
+    //     required:true
+    // }
 })
 
 module.exports = User = mongoose.model('users', UserSchema)
