@@ -3,6 +3,8 @@ const express = require('express')
 //实例化router  Router()是个方法
 const router  = express.Router()
 const bodyParser = require('body-parser')
+const gravatar = require('gravatar');
+ 
 //引入加密的包给password进行加密
 const bcrypt = require('bcrypt');
 const User = require('../../models/User')
@@ -31,6 +33,8 @@ router.post('/register',(req,res) =>{
             if(user){
                 return res.status(400).json({email:'邮箱已经被注册！'})
             }else{
+                const avatar = gravatar.url(req.body.email, {s: '200', r: 'pg', d: 'mm'});
+
                 const newUser = new User({
                     name:req.body.name,
                     email:req.body.email,
